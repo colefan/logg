@@ -17,7 +17,7 @@ func newLogWriter(wr io.Writer) *logWriter {
 
 func (lg *logWriter) println(when time.Time, msg string) {
 	lg.Lock()
-	str := when.Format("2006-01-02 15:03:04")
+	str := when.Format("2006-01-02 15:04:05")
 	str = str + msg + "\n"
 	lg.writer.Write([]byte(str))
 	lg.Unlock()
