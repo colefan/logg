@@ -109,6 +109,7 @@ func (f *fileLogWriter) doRotate(logTime time.Time) error {
 	}
 	num := 1
 	fName := ""
+	//logTime.Add
 	if f.MaxSize > 0 {
 		for ; err == nil && num <= 999; num++ {
 			fName = f.fileNameOnly + fmt.Sprintf("_%s_%03d%s", logTime.Format("2006-01-02"), num, f.fileSuffix)
@@ -116,6 +117,7 @@ func (f *fileLogWriter) doRotate(logTime time.Time) error {
 		}
 
 	} else {
+
 		fName = fmt.Sprintf("%s_%s%s", f.fileNameOnly, logTime.Format("2006-01-02"), f.fileSuffix)
 		_, err = os.Lstat(fName)
 	}
