@@ -166,7 +166,7 @@ func (f *fileLogWriter) WriteMsg(when time.Time, msg string, level int) error {
 	if level > f.Level {
 		return nil
 	}
-	msg = when.Format("2006-01-02 15:03:04") + msg + "\n"
+	msg = when.Format("2006-01-02 15:04:05") + msg + "\n"
 	if f.Rotate {
 		if f.needRotate(len(msg), when.Day()) {
 			f.Lock()
