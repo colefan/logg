@@ -110,6 +110,10 @@ func (f *fileLogWriter) doRotate(logTime time.Time) error {
 	num := 1
 	fName := ""
 	//logTime.Add
+	dlt, err := time.ParseDuration("-24h")
+	logTime = logTime.Add(dlt)
+	//t := time.Date(logTime.Year(), logTime.Month(), logTime.Day(), 0, 0, 0)
+	//logTime.Truncate
 	if f.MaxSize > 0 {
 		for ; err == nil && num <= 999; num++ {
 			fName = f.fileNameOnly + fmt.Sprintf("_%s_%03d%s", logTime.Format("2006-01-02"), num, f.fileSuffix)
